@@ -1,8 +1,9 @@
 package consulrima
 
 class Phone {
-    String areaCode
-    String phoneNumber
+    int areaCode
+    int phoneNumber
+    int type
 
     static belongsTo = [employee: Employee]
     static constraints = {
