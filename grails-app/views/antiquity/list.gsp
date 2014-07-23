@@ -30,6 +30,8 @@
 					
 						<th><g:message code="antiquity.employee.label" default="Employee" /></th>
 					
+						<g:sortableColumn property="observation" title="${message(code: 'antiquity.observation.label', default: 'Observation')}" />
+					
 						<g:sortableColumn property="salary" title="${message(code: 'antiquity.salary.label', default: 'Salary')}" />
 					
 					</tr>
@@ -43,6 +45,8 @@
 						<td><g:formatDate date="${antiquityInstance.dischargeDate}" /></td>
 					
 						<td>${fieldValue(bean: antiquityInstance, field: "employee")}</td>
+					
+						<td>${fieldValue(bean: antiquityInstance, field: "observation")}</td>
 					
 						<td>${fieldValue(bean: antiquityInstance, field: "salary")}</td>
 					

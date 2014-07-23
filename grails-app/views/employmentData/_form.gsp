@@ -26,6 +26,30 @@
 	<g:select id="employee" name="employee.id" from="${consulrima.Employee.list()}" optionKey="id" required="" value="${employmentDataInstance?.employee?.id}" class="many-to-one"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'extra', 'error')} ">
+	<label for="extra">
+		<g:message code="employmentData.extra.label" default="Extra" />
+		
+	</label>
+	<g:textField name="extra" value="${employmentDataInstance?.extra}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'firstExtraEndowmentAmount', 'error')} required">
+	<label for="firstExtraEndowmentAmount">
+		<g:message code="employmentData.firstExtraEndowmentAmount.label" default="First Extra Endowment Amount" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="firstExtraEndowmentAmount" precision="day"  value="${employmentDataInstance?.firstExtraEndowmentAmount}"  />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'firstExtraEndowmentDate', 'error')} required">
+	<label for="firstExtraEndowmentDate">
+		<g:message code="employmentData.firstExtraEndowmentDate.label" default="First Extra Endowment Date" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="firstExtraEndowmentDate" precision="day"  value="${employmentDataInstance?.firstExtraEndowmentDate}"  />
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'firstPantEndowmentAmount', 'error')} required">
 	<label for="firstPantEndowmentAmount">
 		<g:message code="employmentData.firstPantEndowmentAmount.label" default="First Pant Endowment Amount" />
@@ -74,12 +98,36 @@
 	<g:datePicker name="firstShoesEndowmentDate" precision="day"  value="${employmentDataInstance?.firstShoesEndowmentDate}"  />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'observation', 'error')} ">
+	<label for="observation">
+		<g:message code="employmentData.observation.label" default="Observation" />
+		
+	</label>
+	<g:textField name="observation" value="${employmentDataInstance?.observation}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'pantSize', 'error')} ">
 	<label for="pantSize">
 		<g:message code="employmentData.pantSize.label" default="Pant Size" />
 		
 	</label>
 	<g:textField name="pantSize" value="${employmentDataInstance?.pantSize}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'secondExtraEndowmentDate', 'error')} required">
+	<label for="secondExtraEndowmentDate">
+		<g:message code="employmentData.secondExtraEndowmentDate.label" default="Second Extra Endowment Date" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="secondExtraEndowmentDate" precision="day"  value="${employmentDataInstance?.secondExtraEndowmentDate}"  />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'secondExtratEndowmentAmount', 'error')} required">
+	<label for="secondExtratEndowmentAmount">
+		<g:message code="employmentData.secondExtratEndowmentAmount.label" default="Second Extrat Endowment Amount" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="secondExtratEndowmentAmount" precision="day"  value="${employmentDataInstance?.secondExtratEndowmentAmount}"  />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: employmentDataInstance, field: 'secondPantEndowmentAmount', 'error')} required">

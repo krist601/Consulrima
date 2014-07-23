@@ -58,6 +58,14 @@
 	<g:textField name="name" value="${employeeInstance?.name}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: employeeInstance, field: 'observation', 'error')} ">
+	<label for="observation">
+		<g:message code="employee.observation.label" default="Observation" />
+		
+	</label>
+	<g:textField name="observation" value="${employeeInstance?.observation}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: employeeInstance, field: 'photo', 'error')} required">
 	<label for="photo">
 		<g:message code="employee.photo.label" default="Photo" />

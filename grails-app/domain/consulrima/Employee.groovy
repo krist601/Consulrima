@@ -9,6 +9,7 @@ class Employee {
     String address
     String email
     byte photo
+    String Observation
     
     static constraints = {
     }

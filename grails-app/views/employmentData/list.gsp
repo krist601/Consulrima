@@ -30,11 +30,11 @@
 					
 						<th><g:message code="employmentData.employee.label" default="Employee" /></th>
 					
-						<g:sortableColumn property="firstPantEndowmentAmount" title="${message(code: 'employmentData.firstPantEndowmentAmount.label', default: 'First Pant Endowment Amount')}" />
+						<g:sortableColumn property="extra" title="${message(code: 'employmentData.extra.label', default: 'Extra')}" />
 					
-						<g:sortableColumn property="firstPantEndowmentDate" title="${message(code: 'employmentData.firstPantEndowmentDate.label', default: 'First Pant Endowment Date')}" />
+						<g:sortableColumn property="firstExtraEndowmentAmount" title="${message(code: 'employmentData.firstExtraEndowmentAmount.label', default: 'First Extra Endowment Amount')}" />
 					
-						<g:sortableColumn property="firstShirtEndowmentAmount" title="${message(code: 'employmentData.firstShirtEndowmentAmount.label', default: 'First Shirt Endowment Amount')}" />
+						<g:sortableColumn property="firstExtraEndowmentDate" title="${message(code: 'employmentData.firstExtraEndowmentDate.label', default: 'First Extra Endowment Date')}" />
 					
 					</tr>
 				</thead>
@@ -48,11 +48,11 @@
 					
 						<td>${fieldValue(bean: employmentDataInstance, field: "employee")}</td>
 					
-						<td><g:formatDate date="${employmentDataInstance.firstPantEndowmentAmount}" /></td>
+						<td>${fieldValue(bean: employmentDataInstance, field: "extra")}</td>
 					
-						<td><g:formatDate date="${employmentDataInstance.firstPantEndowmentDate}" /></td>
+						<td><g:formatDate date="${employmentDataInstance.firstExtraEndowmentAmount}" /></td>
 					
-						<td><g:formatDate date="${employmentDataInstance.firstShirtEndowmentAmount}" /></td>
+						<td><g:formatDate date="${employmentDataInstance.firstExtraEndowmentDate}" /></td>
 					
 					</tr>
 				</g:each>

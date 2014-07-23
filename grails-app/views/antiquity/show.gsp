@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${antiquityInstance?.observation}">
+				<li class="fieldcontain">
+					<span id="observation-label" class="property-label"><g:message code="antiquity.observation.label" default="Observation" /></span>
+					
+						<span class="property-value" aria-labelledby="observation-label"><g:fieldValue bean="${antiquityInstance}" field="observation"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${antiquityInstance?.salary}">
 				<li class="fieldcontain">
 					<span id="salary-label" class="property-label"><g:message code="antiquity.salary.label" default="Salary" /></span>

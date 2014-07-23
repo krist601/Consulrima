@@ -50,6 +50,33 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${employmentDataInstance?.extra}">
+				<li class="fieldcontain">
+					<span id="extra-label" class="property-label"><g:message code="employmentData.extra.label" default="Extra" /></span>
+					
+						<span class="property-value" aria-labelledby="extra-label"><g:fieldValue bean="${employmentDataInstance}" field="extra"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${employmentDataInstance?.firstExtraEndowmentAmount}">
+				<li class="fieldcontain">
+					<span id="firstExtraEndowmentAmount-label" class="property-label"><g:message code="employmentData.firstExtraEndowmentAmount.label" default="First Extra Endowment Amount" /></span>
+					
+						<span class="property-value" aria-labelledby="firstExtraEndowmentAmount-label"><g:formatDate date="${employmentDataInstance?.firstExtraEndowmentAmount}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${employmentDataInstance?.firstExtraEndowmentDate}">
+				<li class="fieldcontain">
+					<span id="firstExtraEndowmentDate-label" class="property-label"><g:message code="employmentData.firstExtraEndowmentDate.label" default="First Extra Endowment Date" /></span>
+					
+						<span class="property-value" aria-labelledby="firstExtraEndowmentDate-label"><g:formatDate date="${employmentDataInstance?.firstExtraEndowmentDate}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${employmentDataInstance?.firstPantEndowmentAmount}">
 				<li class="fieldcontain">
 					<span id="firstPantEndowmentAmount-label" class="property-label"><g:message code="employmentData.firstPantEndowmentAmount.label" default="First Pant Endowment Amount" /></span>
@@ -104,11 +131,38 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${employmentDataInstance?.observation}">
+				<li class="fieldcontain">
+					<span id="observation-label" class="property-label"><g:message code="employmentData.observation.label" default="Observation" /></span>
+					
+						<span class="property-value" aria-labelledby="observation-label"><g:fieldValue bean="${employmentDataInstance}" field="observation"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${employmentDataInstance?.pantSize}">
 				<li class="fieldcontain">
 					<span id="pantSize-label" class="property-label"><g:message code="employmentData.pantSize.label" default="Pant Size" /></span>
 					
 						<span class="property-value" aria-labelledby="pantSize-label"><g:fieldValue bean="${employmentDataInstance}" field="pantSize"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${employmentDataInstance?.secondExtraEndowmentDate}">
+				<li class="fieldcontain">
+					<span id="secondExtraEndowmentDate-label" class="property-label"><g:message code="employmentData.secondExtraEndowmentDate.label" default="Second Extra Endowment Date" /></span>
+					
+						<span class="property-value" aria-labelledby="secondExtraEndowmentDate-label"><g:formatDate date="${employmentDataInstance?.secondExtraEndowmentDate}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${employmentDataInstance?.secondExtratEndowmentAmount}">
+				<li class="fieldcontain">
+					<span id="secondExtratEndowmentAmount-label" class="property-label"><g:message code="employmentData.secondExtratEndowmentAmount.label" default="Second Extrat Endowment Amount" /></span>
+					
+						<span class="property-value" aria-labelledby="secondExtratEndowmentAmount-label"><g:formatDate date="${employmentDataInstance?.secondExtratEndowmentAmount}" /></span>
 					
 				</li>
 				</g:if>

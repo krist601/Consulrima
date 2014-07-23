@@ -86,6 +86,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${employeeInstance?.observation}">
+				<li class="fieldcontain">
+					<span id="observation-label" class="property-label"><g:message code="employee.observation.label" default="Observation" /></span>
+					
+						<span class="property-value" aria-labelledby="observation-label"><g:fieldValue bean="${employeeInstance}" field="observation"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${employeeInstance?.photo}">
 				<li class="fieldcontain">
 					<span id="photo-label" class="property-label"><g:message code="employee.photo.label" default="Photo" /></span>

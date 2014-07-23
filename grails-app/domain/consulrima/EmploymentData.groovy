@@ -18,6 +18,12 @@ class EmploymentData {
     Date SecondPantEndowmentAmount
     Date FirstShoesEndowmentAmount
     Date SecondShoestEndowmentAmount
+    String extra
+    Date FirstExtraEndowmentDate
+    Date SecondExtraEndowmentDate
+    Date FirstExtraEndowmentAmount
+    Date SecondExtratEndowmentAmount
+    String Observation
 
     static belongsTo = [employee: Employee]
     static constraints = {

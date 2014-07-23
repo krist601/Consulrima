@@ -26,6 +26,14 @@
 	<g:select id="employee" name="employee.id" from="${consulrima.Employee.list()}" optionKey="id" required="" value="${antiquityInstance?.employee?.id}" class="many-to-one"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: antiquityInstance, field: 'observation', 'error')} ">
+	<label for="observation">
+		<g:message code="antiquity.observation.label" default="Observation" />
+		
+	</label>
+	<g:textField name="observation" value="${antiquityInstance?.observation}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: antiquityInstance, field: 'salary', 'error')} required">
 	<label for="salary">
 		<g:message code="antiquity.salary.label" default="Salary" />
