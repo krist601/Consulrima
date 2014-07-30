@@ -8,8 +8,8 @@ class Employee {
     Date bornDate
     String address
     String email
-    byte photo
-    String Observation
+    byte[] photo
+    String observation
     
     static constraints = {
     }

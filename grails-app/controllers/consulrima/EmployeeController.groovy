@@ -99,4 +99,15 @@ class EmployeeController {
             redirect(action: "show", id: id)
         }
     }
+    
+      def showImage = {
+        def imagen = Employee.get( params.id )
+        println imagen.photo
+        
+       
+        response.outputStream << imagen.photo
+
+       response.outputStream.flush()
+      //  return;
+    }
 }

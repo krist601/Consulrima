@@ -1,126 +1,110 @@
-<html>
-<head>
-	<meta name='layout' content='main'/>
-	<title><g:message code="springSecurity.login.title"/></title>
-	<style type='text/css' media='screen'>
-	#login {
-		margin: 15px 0px;
-		padding: 0px;
-		text-align: center;
-	}
+<!DOCTYPE html>
 
-	#login .inner {
-		width: 340px;
-		padding-bottom: 6px;
-		margin: 60px auto;
-		text-align: left;
-		border: 1px solid #aab;
-		background-color: #f0f0fa;
-		-moz-box-shadow: 2px 2px 2px #eee;
-		-webkit-box-shadow: 2px 2px 2px #eee;
-		-khtml-box-shadow: 2px 2px 2px #eee;
-		box-shadow: 2px 2px 2px #eee;
-	}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
 
-	#login .inner .fheader {
-		padding: 18px 26px 14px 26px;
-		background-color: #f7f7ff;
-		margin: 0px 0 14px 0;
-		color: #2e3741;
-		font-size: 18px;
-		font-weight: bold;
-	}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="main">
+        <meta name="author" content="ThemeBucket">
+ 
 
-	#login .inner .cssform p {
-		clear: left;
-		margin: 0;
-		padding: 4px 0 3px 0;
-		padding-left: 105px;
-		margin-bottom: 20px;
-		height: 1%;
-	}
+        <title>Login</title>
 
-	#login .inner .cssform input[type='text'] {
-		width: 120px;
-	}
+    <!--Core CSS -->
 
-	#login .inner .cssform label {
-		font-weight: bold;
-		float: left;
-		text-align: right;
-		margin-left: -105px;
-		width: 110px;
-		padding-top: 3px;
-		padding-right: 10px;
-	}
+        <link rel="stylesheet" href="${resource(dir: 'bs3/css', file: 'bootstrap.min.css')}" type="text/css">
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap-reset.css')}" type="text/css">
+        <link rel="stylesheet" href="${resource(dir: 'font-awesome/css', file: 'font-awesome.css')}" type="text/css">
 
-	#login #remember_me_holder {
-		padding-left: 120px;
-	}
+    <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'style.css')}" type="text/css">
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'style-responsive.css')}" type="text/css">
 
-	#login #submit {
-		margin-left: 15px;
-	}
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+    <script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-	#login #remember_me_holder label {
-		float: none;
-		margin-left: 0;
-		text-align: left;
-		width: 200px
-	}
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    </head>
 
-	#login .inner .login_message {
-		padding: 6px 25px 20px 25px;
-		color: #c33;
-	}
+    <body class="login-body">
 
-	#login .inner .text_ {
-		width: 120px;
-	}
+        <div class="container">
 
-	#login .inner .chk {
-		height: 12px;
-	}
-	</style>
-</head>
+            <form action='${postUrl}' method='POST' id='loginForm' class='form-signin' autocomplete='off'>
+                <h2 class="form-signin-heading">
+                    <img src="${resource(dir: 'images', file: 'logo2.jpg')}" alt="">
+             
+                </h2>
+                <g:if test='${flash.message}'>
+                    <div class='login_message'>${flash.message}</div>
+                </g:if>
+                <div class="login-wrap">
+                    <div class="user-login-info">
+                        <p>
+                            <input type="text" class="form-control" name='j_username' id='username' placeholder="User ID" autofocus>
+                        </p>
+                        <p>
+                            <input type="password" class="form-control" name='j_password' id='password' placeholder="Password">
+                        </p>
+                    </div>
+                    <label class="checkbox">
+                        <input type="checkbox" value="remember-me"> Recordarme
+                        <span class="pull-right">
+                            <a data-toggle="modal" href="#myModal"> Olvidé Contraseña</a>
 
-<body>
-<div id='login'>
-	<div class='inner'>
-		<div class='fheader'><g:message code="springSecurity.login.header"/></div>
+                        </span>
+                    </label>
+                    <p>
+                        <input class="btn btn-lg btn-login btn-block" id="submit" type="submit" value='${message(code: "springSecurity.login.button")}'/>
+                    </p>
+                    <div class="registration">
+                        Don't have an account yet?
+                        <a class="" href="registration.html">
+                            Create an account
+                        </a>
+                    </div>
 
-		<g:if test='${flash.message}'>
-			<div class='login_message'>${flash.message}</div>
-		</g:if>
+                </div>
 
-		<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
-			<p>
-				<label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
-				<input type='text' class='text_' name='j_username' id='username'/>
-			</p>
+          <!-- Modal -->
+                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Forgot Password ?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Enter your e-mail address below to reset your password.</p>
+                                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
 
-			<p>
-				<label for='password'><g:message code="springSecurity.login.password.label"/>:</label>
-				<input type='password' class='text_' name='j_password' id='password'/>
-			</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                                <button class="btn btn-success" type="button">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal -->
 
-			<p id="remember_me_holder">
-				<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
-				<label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
-			</p>
+            </form>
 
-			<p>
-				<input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
-			</p>
-		</form>
-	</div>
-</div>
-<script type='text/javascript'>
-	<!--
-	(function() {
-		document.forms['loginForm'].elements['j_username'].focus();
-	})();
-	// -->
-</script>
-</body>
+        </div>
+
+
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!--Core js-->
+        <script src="js/jquery.js"></script>
+        <script src="bs3/js/bootstrap.min.js"></script>
+
+    </body>
 </html>
