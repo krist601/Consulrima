@@ -34,7 +34,7 @@ Morris.Line({
     xkey: 'elapsed',
     ykeys: ['value'],
     labels: ['value'],
-    lineColors:['#1FB5AD'],
+    lineColors:['#9bcf00'],
     parseTime: false
 });
 

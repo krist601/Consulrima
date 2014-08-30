@@ -1,4 +1,4 @@
-
+<%@ page import="user.SecAppUser" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,29 +46,38 @@
 
 
 
-
-           
-
 <!--start: Wrapper-->
         <div id="wrapper">
 
 <!--start: Container -->
-            <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <div class="recent-act">
+                                <h1>Registro de Trabajadores </h1>
+                            </div>
 
-        <!-- start: Hero Unit - Main hero unit for a primary marketing message or call to action -->
-                <div class="hero-unit">
-                    <p>
-                        This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-                    </p>
-                    <p><a class="btn btn-success btn-large">Learn more &raquo;</a></p>
+                        </header>
+                        <div class="panel-body">
+                            <h4>
+                                Bienvenido, ¡ ${SecAppUser.findByUsername(sec.loggedInUserInfo(field:'username')).name} !
+                            </h4>
+                        </div>
+                    </section>
                 </div>
-                        <!-- end: Hero Unit -->
-
-
-
-
             </div>
-            <!--end: Container-->
+            
+             <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                     
+                        <div class="panel-body">
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
 
         </div>
         <!-- end: Wrapper  -->			

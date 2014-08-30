@@ -16,6 +16,7 @@ class AdvancesController {
     }
 
     def create() {
+        params.employee=Employee.get(params.foo)
         [advancesInstance: new Advances(params)]
     }
 
@@ -27,7 +28,7 @@ class AdvancesController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'advances.label', default: 'Advances'), advancesInstance.id])
-        redirect(action: "show", id: advancesInstance.id)
+        redirect(controller: "employee", action: "show", id: advancesInstance.employee.id)
     }
 
     def show(Long id) {
@@ -78,7 +79,7 @@ class AdvancesController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'advances.label', default: 'Advances'), advancesInstance.id])
-        redirect(action: "show", id: advancesInstance.id)
+        redirect(controller: "employee", action: "show", id: advancesInstance.employee.id)
     }
 
     def delete(Long id) {
@@ -96,7 +97,7 @@ class AdvancesController {
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'advances.label', default: 'Advances'), id])
-            redirect(action: "show", id: id)
+            redirect(controller: "employee", action: "show", id: advancesInstance.employee.id)
         }
     }
 }

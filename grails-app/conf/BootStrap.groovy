@@ -13,11 +13,11 @@ class BootStrap {
 
     SecAppUserSecAppRole.create testUser, adminRole, true
 
-    assert SecAppUser.count() == 1
-    assert SecAppRole.count() == 2
-    assert SecAppUserSecAppRole.count() == 1
+   
   }
-  
+  /*
+ def init = {  servletContext ->
+ } */
   def destroy = {
   }
 }

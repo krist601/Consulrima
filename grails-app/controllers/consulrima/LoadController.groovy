@@ -16,6 +16,7 @@ class LoadController {
     }
 
     def create() {
+        params.employee=Employee.get(params.foo)
         [loadInstance: new Load(params)]
     }
 
@@ -27,7 +28,7 @@ class LoadController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'load.label', default: 'Load'), loadInstance.id])
-        redirect(action: "show", id: loadInstance.id)
+        redirect(controller: "employee", action: "show", id: loadInstance.employee.id)
     }
 
     def show(Long id) {
@@ -78,7 +79,7 @@ class LoadController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'load.label', default: 'Load'), loadInstance.id])
-        redirect(action: "show", id: loadInstance.id)
+        redirect(controller: "employee", action: "show", id: loadInstance.employee.id)
     }
 
     def delete(Long id) {
@@ -92,7 +93,7 @@ class LoadController {
         try {
             loadInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'load.label', default: 'Load'), id])
-            redirect(action: "list")
+            redirect(controller: "employee", action: "show", id: loadInstance.employee.id)
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'load.label', default: 'Load'), id])

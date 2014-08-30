@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="main">
         <meta name="author" content="ThemeBucket">
- 
+
 
         <title>Login</title>
 
@@ -39,18 +39,21 @@
             <form action='${postUrl}' method='POST' id='loginForm' class='form-signin' autocomplete='off'>
                 <h2 class="form-signin-heading">
                     <img src="${resource(dir: 'images', file: 'logo2.jpg')}" alt="">
-             
+
                 </h2>
-                <g:if test='${flash.message}'>
-                    <div class='login_message'>${flash.message}</div>
+                <g:if test="${flash.error}">
+                    <div class="alert alert-block alert-danger fade in">${flash.error}</div>
+                </g:if>
+                <g:if test="${flash.message}">
+                    <div class="alert alert-info fade in">${flash.message}</div>
                 </g:if>
                 <div class="login-wrap">
                     <div class="user-login-info">
                         <p>
-                            <input type="text" class="form-control" name='j_username' id='username' placeholder="User ID" autofocus>
+                            <input type="text" class="form-control" name='j_username' id='username' placeholder="User ID" autofocus required>
                         </p>
                         <p>
-                            <input type="password" class="form-control" name='j_password' id='password' placeholder="Password">
+                            <input type="password" class="form-control" name='j_password' id='password' placeholder="Password" required>
                         </p>
                     </div>
                     <label class="checkbox">
@@ -64,9 +67,9 @@
                         <input class="btn btn-lg btn-login btn-block" id="submit" type="submit" value='${message(code: "springSecurity.login.button")}'/>
                     </p>
                     <div class="registration">
-                        Don't have an account yet?
+
                         <a class="" href="registration.html">
-                            Create an account
+                            Registro
                         </a>
                     </div>
 

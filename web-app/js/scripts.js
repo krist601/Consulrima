@@ -34,7 +34,7 @@
 
 
             $(".leftside-navigation").niceScroll({
-                cursorcolor: "#1FB5AD",
+                cursorcolor: "#9bcf00",
                 cursorborder: "0px solid #fff",
                 cursorborderradius: "0px",
                 cursorwidth: "3px"
@@ -47,7 +47,7 @@
             $(".leftside-navigation").getNiceScroll().show();
 
             $(".right-stat-bar").niceScroll({
-                cursorcolor: "#1FB5AD",
+                cursorcolor: "#9bcf00",
                 cursorborder: "0px solid #fff",
                 cursorborderradius: "0px",
                 cursorwidth: "3px"
@@ -209,7 +209,7 @@
         $('.sidebar-toggle-box .fa-bars').click(function (e) {
 
             $(".leftside-navigation").niceScroll({
-                cursorcolor: "#1FB5AD",
+                cursorcolor: "#9bcf00",
                 cursorborder: "0px solid #fff",
                 cursorborderradius: "0px",
                 cursorwidth: "3px"

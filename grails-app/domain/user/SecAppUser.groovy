@@ -10,10 +10,16 @@ class SecAppUser {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-
+        byte [] photo
+        String name
+        String email 
+  
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
+                photo blank: true, nullable: true
+                name blank: true, nullable: true
+                email blank: true, nullable: true        
 	}
 
 	static mapping = {
