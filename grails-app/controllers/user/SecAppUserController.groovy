@@ -3,7 +3,6 @@ package user
 import org.springframework.dao.DataIntegrityViolationException
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
-import java.nio.file.Path
 import java.awt.image.BufferedImage
 import java.io.ByteArrayOutputStream
 import java.net.URL
