@@ -1,7 +1,7 @@
 package consulrima
 
 class Load {
-    int amount
+    float amount
     Date date
 
     static belongsTo = [employee: Employee]  

@@ -1,7 +1,9 @@
 package consulrima
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.security.access.annotation.Secured
 
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
 class OccupationController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -20,6 +22,7 @@ class OccupationController {
     }
 
     def save() {
+        params.salary=Float.parseFloat(params.salary)
         def occupationInstance = new Occupation(params)
         if (!occupationInstance.save(flush: true)) {
             render(view: "create", model: [occupationInstance: occupationInstance])
@@ -41,6 +44,7 @@ class OccupationController {
         [occupationInstance: occupationInstance]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def edit(Long id) {
         def occupationInstance = Occupation.get(id)
         if (!occupationInstance) {
@@ -52,7 +56,9 @@ class OccupationController {
         [occupationInstance: occupationInstance]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def update(Long id, Long version) {
+        params.salary=Float.parseFloat(params.salary)
         def occupationInstance = Occupation.get(id)
         if (!occupationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'occupation.label', default: 'Occupation'), id])
@@ -81,6 +87,7 @@ class OccupationController {
         redirect(action: "show", id: occupationInstance.id)
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def delete(Long id) {
         def occupationInstance = Occupation.get(id)
         if (!occupationInstance) {

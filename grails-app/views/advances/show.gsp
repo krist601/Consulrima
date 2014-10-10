@@ -2,16 +2,27 @@
 <%@ page import="consulrima.Advances" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'advances.label', default: 'Advances')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-            <div class="row">
+    <head>
+        <meta name="layout" content="main">
+        <g:set var="entityName" value="${message(code: 'advances.label', default: 'Advances')}" />
+        <title><g:message code="default.show.label" args="[entityName]" /></title>
+    </head>
+    <body>
+        <div class="row">
             <div class="col-md-12">
 
                 <section class="panel">
+
+                    <g:hasErrors bean="${advancesInstance}">
+                        <g:eachError bean="${advancesInstance}" var="error">
+                            <div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <strong>Error!</strong> <g:message error="${error}"/>
+                            </div>
+                        </g:eachError>
+                    </g:hasErrors>
                     <header class="panel-heading">
                         <h3>Prestamo</h3>
                     </header>
@@ -21,7 +32,7 @@
                                 <tbody>
                                     <tr>
                                         <td style="width: 30%;">Monto Adelantado</td>
-                                        <td>${advancesInstance?.amount}</td>
+                                        <td><g:formatNumber number="${advancesInstance?.amount}" type="number"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width: 30%;">Fecha de Adelanto</td>
@@ -46,6 +57,6 @@
         </div>
         <div  style="text-align: left;float:left;"><font size="1">&copy; 2014. Consulrima Servicios 2020 CA. Todos los derechos reservados.</font></div>
         <div style="text-align: right;"><font size="1">Desarrollado por: <a href="http://www.fasterik.com.ve/">Kristian Cortés y Keyla Hernández</a></font></div>
-            
-	</body>
+
+    </body>
 </html>

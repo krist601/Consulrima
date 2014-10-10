@@ -1,61 +1,71 @@
 <%@ page import="consulrima.Allocation" %>
-<script>
-        $(document).ready(function() {
-        $('#contact-location').change(function(){
-        var location = $(this).val(),
-        div = $('#' + location);
-
-        $('div').hide();
-        div.show();
-
-        });
-</script>
-
 
 <div class="fieldcontain ${hasErrors(bean: allocationInstance, field: 'allocationDate', 'error')} required">
-	<label for="allocationDate">
-		<g:message code="allocation.allocationDate.label" default="Allocation Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker class="form-control" name="allocationDate" precision="day"  value="${allocationInstance?.allocationDate}"  />
+    <label for="allocationDate">
+        <g:message code="allocation.allocationDate.label" default="Tipo de Dotación" />
+        <span class="required-indicator">*</span>
+    </label>
+    <select class="default form-control" name="allocationType" id="allocationType" value="${allocationInstance?.allocationType?.name()}">
+        <option value="Camisa">Camisa</option>
+        <option value="Pantalon">Pantalon</option>
+        <option value="Zapatos">Zapatos</option>
+        <option value="Otros">Otros</option>
+    </select>
+</div>
+<br>
+<div id="showMe">
+    <div class="fieldcontain ${hasErrors(bean: allocationInstance, field: 'otherType', 'error')} required">
+        <label for="otherType">
+            <g:message code="allocation.otherType.label" default="Nombre de la Dotación" />
+            <span class="required-indicator">*</span>
+        </label>
+        <g:textField class="form-control" name="otherType" value="${allocationInstance?.otherType}"/>
+    </div>
+    <br>
+</div>
+<div class="fieldcontain ${hasErrors(bean: allocationInstance, field: 'allocationDate', 'error')} required">
+    <label for="allocationDate">
+        <g:message code="allocation.allocationDate.label" default="Fecha de Dotación" />
+        <span class="required-indicator">*</span>
+    </label>
+    <div class="form-group">
+        <input value="${allocationInstance?.allocationDate}" name="allocationDate" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" />
+    </div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: allocationInstance, field: 'allocationType', 'error')} required">
-	<label for="allocationType">
-		<g:message code="allocation.allocationType.label" default="Allocation Type" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select class="form-control" name="allocationType" from="${consulrima.Allocation$Type?.values()}" keys="${consulrima.Allocation$Type.values()*.name()}" required="" value="${allocationInstance?.allocationType?.name()}"/>
-</div>
 
-<select id="contact-location">
-    <option value="">-- Select Location --</option>
-    <option value="sydneyBranch">Sydney</option>
-    <option value="melbourneBranch">Melbourne</option>
-</select>
-
-<div id="sydneyBranch" style="display:none">
-    CONTENT 1
-</div>
-
-<div id="melbourneBranch" style="display:none">
-    CONTENT 2
-</div>
-
+<script>
+    var elem = document.getElementById("allocationType");
+    elem.onchange = function(){
+    var hiddenDiv = document.getElementById("showMe");
+    if (this.value=="Otros") {
+    hiddenDiv.style.display = (this.value == "") ? "none":"block";
+    }
+    if (this.value!="Otros") {
+    hiddenDiv.style.display = "none";
+    }
+    };
+</script>
+<style>
+    #showMe{
+    display:none;
+    }
+</style>
 <div class="fieldcontain ${hasErrors(bean: allocationInstance, field: 'amount', 'error')} required">
-	<label for="amount">
-		<g:message code="allocation.amount.label" default="Amount" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field class="form-control" name="amount" type="number" value="${allocationInstance.amount}" required=""/>
+    <label for="amount">
+        <g:message code="allocation.amount.label" default="Cantidad" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:field class="form-control" name="amount" type="number" value="${allocationInstance.amount}" required=""/>
 </div>
-                <g:hiddenField name="employee.id" value="${allocationInstance?.employee?.id}"/>
+<g:hiddenField name="employee.id" value="${allocationInstance?.employee?.id}"/>
 
-
+<br>
 <div class="fieldcontain ${hasErrors(bean: allocationInstance, field: 'size', 'error')} ">
-	<label for="size">
-		<g:message code="allocation.size.label" default="Size" />
-		
-	</label>
-	<g:textField class="form-control" name="size" value="${allocationInstance?.size}"/>
+    <label for="size">
+        <g:message code="allocation.size.label" default="Talla" />
+
+    </label>
+    <g:textField class="form-control" name="size" value="${allocationInstance?.size}"/>
 </div>
+<br>

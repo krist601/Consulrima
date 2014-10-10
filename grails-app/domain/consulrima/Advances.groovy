@@ -1,7 +1,7 @@
 package consulrima
 
 class Advances {
-    int amount
+    float amount
     Date date
 
     static belongsTo = [employee: Employee]

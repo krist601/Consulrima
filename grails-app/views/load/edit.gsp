@@ -13,11 +13,14 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${loadInstance}">
-                <ul class="errors" role="alert">
-                    <g:eachError bean="${loadInstance}" var="error">
-                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                        </g:eachError>
-                </ul>
+                <g:eachError bean="${loadInstance}" var="error">
+                    <div class="alert alert-block alert-danger fade in">
+                        <button data-dismiss="alert" class="close close-sm" type="button">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        <strong>Error!</strong> <g:message error="${error}"/>
+                    </div>
+                </g:eachError>
             </g:hasErrors>
             <g:form method="post" >
                 <g:hiddenField name="id" value="${loadInstance?.id}" />
@@ -30,7 +33,31 @@
                         <div class="panel-body">
                             <div class="position-center">
                                 <div  role="form" >
-                                    <g:render template="form"/>
+                                    <%@ page import="consulrima.Load" %>
+
+                                    <div class="fieldcontain ${hasErrors(bean: loadInstance, field: 'amount', 'error')} required">
+                                        <label for="amount">
+                                            <g:message code="load.amount.label" default="Monto" />
+                                            <span class="required-indicator">*</span>
+                                        </label>
+                                        <g:field class="form-control" name="amount" type="number" value="${loadInstance.amount}" required=""/>
+                                    </div>
+
+                                    <div class="col-md-12 form-group">
+                                        <label for="date">
+                                            <g:message code="load.date.label" default="Fecha del Prestamo" />
+                                        </label>
+                                        <div class="form-group">
+                                            <input value="${loadInstance?.date.format('MM-dd-yyyy')}" name="date" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" />
+
+
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <g:hiddenField name="employee.id" value="${loadInstance?.employee?.id}"/>
+
+
 
                                     <g:actionSubmit class="btn btn-info" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                                     <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
@@ -44,6 +71,6 @@
         </div>
         <div  style="text-align: left;float:left;"><font size="1">&copy; 2014. Consulrima Servicios 2020 CA. Todos los derechos reservados.</font></div>
         <div style="text-align: right;"><font size="1">Desarrollado por: <a href="http://www.fasterik.com.ve/">Kristian Cortés y Keyla Hernández</a></font></div>
-            
+
     </body>
 </html>

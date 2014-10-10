@@ -1,10 +1,22 @@
 package consulrima
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.security.access.annotation.Secured
+import java.text.SimpleDateFormat
+import org.compass.core.engine.SearchEngineQueryParseException
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.Path
+import java.awt.image.BufferedImage
+import java.io.ByteArrayOutputStream
+import java.net.URL
+import javax.imageio.ImageIO
 
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
 class AllocationController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static SimpleDateFormat sdf = new SimpleDateFormat( 'MM-dd-yyyy' ) //H:m:s
 
     def index() {
         redirect(action: "list", params: params)
@@ -21,6 +33,8 @@ class AllocationController {
     }
 
     def save() {
+        println params
+        params.allocationDate = sdf.parse(params.allocationDate)
         def allocationInstance = new Allocation(params)
         if (!allocationInstance.save(flush: true)) {
             render(view: "create", model: [allocationInstance: allocationInstance])
@@ -42,6 +56,7 @@ class AllocationController {
         [allocationInstance: allocationInstance]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def edit(Long id) {
         def allocationInstance = Allocation.get(id)
         if (!allocationInstance) {
@@ -53,6 +68,7 @@ class AllocationController {
         [allocationInstance: allocationInstance]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def update(Long id, Long version) {
         def allocationInstance = Allocation.get(id)
         if (!allocationInstance) {
@@ -82,6 +98,7 @@ class AllocationController {
         redirect(controller: "employee", action: "show", id: allocationInstance.employee.id)
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def delete(Long id) {
         def allocationInstance = Allocation.get(id)
         if (!allocationInstance) {

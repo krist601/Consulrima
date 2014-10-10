@@ -13,18 +13,24 @@
                 <section class="panel">
 
                     <div class="panel-body profile-information">
-                        <g:if test="${flash.error}">
-                          <div class="alert alert-block alert-danger fade in">  <strong> ${flash.error}</strong> </div>
-                        </g:if>
                         <g:if test="${flash.message}">
-                            <div class="alert alert-info fade in"><strong>${flash.message}</strong> </div>
-                        </g:if>
+                            <div class="alert alert-info fade in"><strong>${flash.message}</strong></div>
+                                </g:if>
+
+                                <g:hasErrors bean="${secAppUserInstance}">
+                                    <g:eachError bean="${secAppUserInstance}" var="error">
+                                <div class="alert alert-block alert-danger fade in">
+                                    <button data-dismiss="alert" class="close close-sm" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <strong>Error!</strong> <g:message error="${error}"/>
+                                </div>
+                            </g:eachError>
+                        </g:hasErrors>
                         <div class="col-md-3">
                             <div class="profile-pic text-center">
                                 <img src="${createLink(controller:'secAppUser', action:'showImage', id: secAppUserInstance?.id)}" alt=""/>
-                                <p style="margin-bottom: 0px; margin-top:10px; color: #9bcf00">
-                                    <a href="${createLink(controller:'secAppUser', action:'edit',id:secAppUserInstance?.id)}" class="btn btn-info" style="margin-left: 20px; margin-bottom: 20px;">Editar Foto</a>
-                                </p>
+                                
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -2,8 +2,8 @@ dataSource {
     pooled = true
     driverClassName = "org.postgresql.Driver"
     dialect = org.hibernate.dialect.PostgreSQLDialect
-    username = "Admin"
-	password = "admin"
+    username = "bdatosco_admin"
+	password = "Consulrima2020"
 }
 hibernate {
     cache.use_second_level_cache=true
@@ -15,21 +15,21 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:postgresql:consulrima"
+            url = "jdbc:postgresql:bdatosco_consulrima"
        
         }   
     }   
     test {
          dataSource {
             dbCreate = "update"
-            url = "jdbc:postgresql:consulrima"
+            url = "jdbc:postgresql:bdatosco_consulrima"
             
         }  
     }   
     production {
          dataSource {
             dbCreate = "update"
-            url = "jdbc:postgresql:consulrima"
+            url = "jdbc:postgresql:bdatosco_consulrima"
           
         } 
     }   

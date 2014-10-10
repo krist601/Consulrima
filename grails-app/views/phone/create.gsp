@@ -1,42 +1,47 @@
 <%@ page import="consulrima.Phone" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'phone.label', default: 'Phone')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#create-phone" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="create-phone" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${phoneInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${phoneInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form action="save" >
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
-			</g:form>
-		</div>
+    <head>
+        <meta name="layout" content="main">
+        <g:set var="entityName" value="${message(code: 'phone.label', default: 'Phone')}" />
+        <title><g:message code="default.create.label" args="[entityName]" /></title>
+    </head>
+    <body><g:form action="save"   enctype="multipart/form-data">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <h4> Registrar Teléfono</h4>
+                    </header>
+
+                    <div class="panel-body">
+                        <g:hasErrors bean="${phoneInstance}">
+                            <g:eachError bean="${phoneInstance}" var="error">
+                                <div class="alert alert-block alert-danger fade in">
+                                    <button data-dismiss="alert" class="close close-sm" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <strong>Error!</strong> <g:message error="${error}"/>
+                                </div>
+                            </g:eachError>
+                        </g:hasErrors>
+                        <g:if test="${flash.message}">
+                            <div class="alert alert-info fade in"><strong>${flash.message}</strong> </div>
+                                </g:if>
+                        <div class="position-center">
+                            <div  role="form" >
+                                <g:render template="form"/>
+
+                                <button type="submit" class="btn btn-info">Continuar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </g:form>
         <div  style="text-align: left;float:left;"><font size="1">&copy; 2014. Consulrima Servicios 2020 CA. Todos los derechos reservados.</font></div>
         <div style="text-align: right;"><font size="1">Desarrollado por: <a href="http://www.fasterik.com.ve/">Kristian Cortés y Keyla Hernández</a></font></div>
-            
-	</body>
+
+    </body>
 </html>

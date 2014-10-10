@@ -1,7 +1,9 @@
 package user
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.security.access.annotation.Secured
 
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
 class SecAppRoleController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -41,6 +43,7 @@ class SecAppRoleController {
         [secAppRoleInstance: secAppRoleInstance]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def edit(Long id) {
         def secAppRoleInstance = SecAppRole.get(id)
         if (!secAppRoleInstance) {
@@ -52,6 +55,7 @@ class SecAppRoleController {
         [secAppRoleInstance: secAppRoleInstance]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def update(Long id, Long version) {
         def secAppRoleInstance = SecAppRole.get(id)
         if (!secAppRoleInstance) {
@@ -81,6 +85,7 @@ class SecAppRoleController {
         redirect(action: "show", id: secAppRoleInstance.id)
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def delete(Long id) {
         def secAppRoleInstance = SecAppRole.get(id)
         if (!secAppRoleInstance) {

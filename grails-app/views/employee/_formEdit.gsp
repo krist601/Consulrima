@@ -1,8 +1,8 @@
 <%@ page import="consulrima.Employee" %>
 <div class="recent-act">
-                                            <h1>Datos Básicos </h1>
+    <h1>Datos Básicos </h1>
 </div>
-   
+
 <div class="row">
     <div class="col-md-4 form-group">
         <label for="cedula">
@@ -28,7 +28,9 @@
         <label for="bornDate">
             <g:message code="employee.bornDate.label" default="Fecha de Nacimiento" />
         </label>
-        <g:datePicker name="bornDate" precision="day"  value="${employeeInstance?.bornDate}" />
+        <div class="form-group">
+            <input value="${employeeInstance?.bornDate}" name="bornDate" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" />
+        </div>
     </div>
     <div class="col-md-6 form-group">
         <label for="gender">
@@ -46,7 +48,7 @@
         <label for="cedula">
             <g:message code="employee.cedula.label" default="Dirección" />
         </label>
-            <textarea class="form-control" name="address" id="cedula" value="${employeeInstance?.address}" required ></textarea>
+        <textarea class="form-control" name="address" id="cedula" value="${employeeInstance?.address}" required ></textarea>
     </div>
 </div>
-  
+

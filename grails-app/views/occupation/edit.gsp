@@ -14,11 +14,14 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${occupationInstance}">
-                <ul class="errors" role="alert">
-                    <g:eachError bean="${occupationInstance}" var="error">
-                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                        </g:eachError>
-                </ul>
+                <g:eachError bean="${occupationInstance}" var="error">
+                    <div class="alert alert-block alert-danger fade in">
+                        <button data-dismiss="alert" class="close close-sm" type="button">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        <strong>Error!</strong> <g:message error="${error}"/>
+                    </div>
+                </g:eachError>
             </g:hasErrors>
             <g:form method="post" >
                 <g:hiddenField name="id" value="${occupationInstance?.id}" />
@@ -43,12 +46,12 @@
                 </div>
             </g:form>
         </div>
-        
+
         <div  style="text-align: left;float:left;"><font size="1">&copy; 2014. Consulrima Servicios 2020 CA. Todos los derechos reservados.</font></div>
         <div style="text-align: right;"><font size="1">Desarrollado por: <a href="http://www.fasterik.com.ve/">Kristian Cortés y Keyla Hernández</a></font></div>
-            
+
         <div  style="text-align: left;float:left;"><font size="1">&copy; 2014. Consulrima Servicios 2020 CA. Todos los derechos reservados.</font></div>
         <div style="text-align: right;"><font size="1">Desarrollado por: <a href="http://www.fasterik.com.ve/">Kristian Cortés y Keyla Hernández</a></font></div>
-            
+
     </body>
 </html>

@@ -31,7 +31,29 @@ grails.mime.types = [
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
+//grails {
+//   mail {
+//     host = "smtp.live.com"
+//     port = 587
+//     username = "mychemicalkrist@hotmail.com"
+//     password = "soapy206"
+//     props = ["mail.smtp.starttls.enable":"true", 
+//                  "mail.smtp.port":"587"]
+//   }
+//}
 
+grails {
+    mail {
+         host = "smtp.gmail.com"
+         port = 465
+         username = "soporte.consulrima@gmail.com"
+         password = "soporteconsulrima"
+         props = ["mail.smtp.auth":"true",
+                  "mail.smtp.socketFactory.port":"465",
+                  "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                  "mail.smtp.socketFactory.fallback":"false","mail.debug": "true"]
+    }
+}
 // What URL patterns should be processed by the resources plugin
 grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
 

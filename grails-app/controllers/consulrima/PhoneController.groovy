@@ -1,7 +1,9 @@
 package consulrima
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.security.access.annotation.Secured
 
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
 class PhoneController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -53,6 +55,8 @@ class PhoneController {
     }
 
     def update(Long id, Long version) {
+        println "el id es"+id
+        println "la version es"+version
         def phoneInstance = Phone.get(id)
         if (!phoneInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'phone.label', default: 'Phone'), id])
@@ -78,7 +82,7 @@ class PhoneController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'phone.label', default: 'Phone'), phoneInstance.id])
-        redirect(action: "show", id: phoneInstance.id)
+        redirect(controller:"employee",action: "show", id: phoneInstance.employee.id)
     }
 
     def delete(Long id) {
@@ -92,7 +96,7 @@ class PhoneController {
         try {
             phoneInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'phone.label', default: 'Phone'), id])
-            redirect(action: "list")
+           redirect(controller:"employee",action: "show", id: phoneInstance.employee.id)
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'phone.label', default: 'Phone'), id])

@@ -36,24 +36,27 @@
 
         <div class="container">
 
-            <form action='${postUrl}' method='POST' id='loginForm' class='form-signin' autocomplete='off'>
+            <form action='${postUrl}' method='POST' id='loginForm'  autocomplete='off'></form>
+            <form action='../login/sendEmail' method='POST' id='forgotPassword'  autocomplete='off'></form>
+                <div class='form-signin'>
                 <h2 class="form-signin-heading">
                     <img src="${resource(dir: 'images', file: 'logo2.jpg')}" alt="">
 
                 </h2>
                 <g:if test="${flash.error}">
-                    <div class="alert alert-block alert-danger fade in">${flash.error}</div>
+                    <div class="alert alert-block alert-danger fade in">Contraseña o Usuario Inválido</div>
                 </g:if>
                 <g:if test="${flash.message}">
-                    <div class="alert alert-info fade in">${flash.message}</div>
+                    <!--<div class="alert alert-info fade in">Contraseña o Usuario Invalido</div>-->
+                    <div class="alert alert-block alert-danger fade in">Contraseña o Usuario Inválido</div>
                 </g:if>
                 <div class="login-wrap">
                     <div class="user-login-info">
                         <p>
-                            <input type="text" class="form-control" name='j_username' id='username' placeholder="User ID" autofocus required>
+                            <input type="text" form="loginForm" class="form-control" name='j_username' id='username' placeholder="User ID" autofocus required>
                         </p>
                         <p>
-                            <input type="password" class="form-control" name='j_password' id='password' placeholder="Password" required>
+                            <input type="password" form="loginForm" class="form-control" name='j_password' id='password' placeholder="Password" required>
                         </p>
                     </div>
                     <label class="checkbox">
@@ -64,14 +67,8 @@
                         </span>
                     </label>
                     <p>
-                        <input class="btn btn-lg btn-login btn-block" id="submit" type="submit" value='${message(code: "springSecurity.login.button")}'/>
+                        <input form="loginForm" class="btn btn-lg btn-login btn-block" id="submit" type="submit" value='${message(code: "springSecurity.login.button")}'/>
                     </p>
-                    <div class="registration">
-
-                        <a class="" href="registration.html">
-                            Registro
-                        </a>
-                    </div>
 
                 </div>
 
@@ -81,23 +78,26 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Forgot Password ?</h4>
+                                <h4 class="modal-title">¿Olvidaste tu Contraseña?</h4>
                             </div>
-                            <div class="modal-body">
-                                <p>Enter your e-mail address below to reset your password.</p>
-                                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                            <section>
+                                
+                                    <div class="modal-body">
+                                        <p style="color: black;">Ingresa tu nombre de usuario y recibirás un correo con tu contraseña.</p>
+                                        <input type="text" form="forgotPassword" name="email" placeholder="Usuario" autocomplete="off" class="form-control placeholder-no-fix">
 
-                            </div>
-                            <div class="modal-footer">
-                                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                                <button class="btn btn-success" type="button">Submit</button>
-                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+                                        <input type="submit" form="forgotPassword"  class="btn btn-success" value="${message(code: 'Enviar', default: 'Enviar')}" />
+                                    </div>
+                            </section>
                         </div>
                     </div>
                 </div>
                 <!-- modal -->
 
-            </form>
+            </div>
 
         </div>
 
@@ -106,8 +106,8 @@
     <!-- Placed js at the end of the document so the pages load faster -->
 
     <!--Core js-->
-        <script src="js/jquery.js"></script>
-        <script src="bs3/js/bootstrap.min.js"></script>
+        <script src="${resource(dir: 'js', file: 'jquery.js')}"></script>
+        <script src="${resource(dir: 'bs3/js', file: 'bootstrap.min.js')}"></script>
 
     </body>
 </html>

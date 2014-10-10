@@ -12,6 +12,16 @@
             <div class="col-md-12">
 
                 <section class="panel">
+                    <g:hasErrors bean="${loadInstance}">
+                        <g:eachError bean="${loadInstance}" var="error">
+                            <div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <strong>Error!</strong> <g:message error="${error}"/>
+                            </div>
+                        </g:eachError>
+                    </g:hasErrors>
                     <header class="panel-heading">
                         <h3>Prestamo</h3>
                     </header>
@@ -26,7 +36,7 @@
                                         <g:else>
                                             <td style="width: 30%;">Monto Abonado</td>
                                         </g:else>
-                                        <td>${loadInstance?.amount}</td>
+                                        <td><g:formatNumber number="${loadInstance?.amount}" type="number"/></td>
                                     </tr>
                                     <tr>
                                         <g:if test="${(loadInstance?.amount<0)}">

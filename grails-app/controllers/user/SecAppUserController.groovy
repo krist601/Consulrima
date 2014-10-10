@@ -3,12 +3,16 @@ package user
 import org.springframework.dao.DataIntegrityViolationException
 import java.nio.file.Files
 import java.nio.file.Paths
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 import java.nio.file.Path
 import java.awt.image.BufferedImage
 import java.io.ByteArrayOutputStream
 import java.net.URL
 import javax.imageio.ImageIO
+import org.springframework.security.access.annotation.Secured
 
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
 class SecAppUserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -44,10 +48,10 @@ class SecAppUserController {
             redirect(action: "list")
             return
         }
-
+   
         [secAppUserInstance: secAppUserInstance]
     }
-
+    
     def edit(Long id) {
         def secAppUserInstance = SecAppUser.get(id)
         if (!secAppUserInstance) {
@@ -58,7 +62,6 @@ class SecAppUserController {
 
         [secAppUserInstance: secAppUserInstance]
     }
-
     def update(Long id, Long version) {
         def secAppUserInstance = SecAppUser.get(id)
         if (!secAppUserInstance) {
@@ -87,7 +90,58 @@ class SecAppUserController {
         flash.message = message(code: 'default.updated.message', args: [message(code: 'secAppUser.label', default: 'SecAppUser'), secAppUserInstance.id])
         redirect(action: "show", id: secAppUserInstance.id)
     }
+    
+    def editPassword(Long id) {
+        
+        id=(id+7)/ 123456789 ///
+        def secAppUserInstance = SecAppUser.get(id)
+        if (!secAppUserInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'secAppUser.label', default: 'SecAppUser'), id])
+            redirect(action: "list")
+            return
+        }
 
+        [secAppUserInstance: secAppUserInstance]
+    }
+
+    def updatePassword(Long id, Long version) {
+        println params
+        def secAppUserInstance = SecAppUser.get(id)
+        if (!secAppUserInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'secAppUser.label', default: 'SecAppUser'), id])
+            redirect(action: "list")
+            return
+        }
+        if (params.password!=params.password2) {
+            secAppUserInstance.errors.rejectValue("version", "Las contraseñas no coinciden",
+                [message(code: 'secAppUser.label', default: 'SecAppUser')] as Object[],
+                          "Las contraseñas no coinciden")
+            render(view: "editPassword", model: [secAppUserInstance: secAppUserInstance])
+            return
+        }
+
+        if (version != null) {
+            if (secAppUserInstance.version > version) {
+                secAppUserInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                    [message(code: 'secAppUser.label', default: 'SecAppUser')] as Object[],
+                          "Another user has updated this SecAppUser while you were editing")
+                render(view: "editPassword", model: [secAppUserInstance: secAppUserInstance])
+                return
+            }
+        }
+
+        secAppUserInstance.properties = params
+
+        if (!secAppUserInstance.save(flush: true)) {
+            render(view: "editPassword", model: [secAppUserInstance: secAppUserInstance])
+            return
+        }
+
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'secAppUser.label', default: 'SecAppUser'), secAppUserInstance.id])
+        redirect(action: "show", id: secAppUserInstance.id)
+    }
+
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def delete(Long id) {
         def secAppUserInstance = SecAppUser.get(id)
         if (!secAppUserInstance) {
@@ -136,4 +190,7 @@ class SecAppUserController {
             response.outputStream.flush()
         }
     }
+    //    def sendMail() {
+    //        redirect(controller:"Index",action: "index")
+    //    }
 }

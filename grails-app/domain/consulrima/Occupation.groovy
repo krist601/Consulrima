@@ -2,7 +2,7 @@ package consulrima
 
 class Occupation {
     String occupationName
-    int salary
+    float salary
     
     static constraints = {
     }

@@ -12,50 +12,50 @@
             document.getElementById("q").focus();
             }
         </script>
-        <!--dynamic table-->
-        <link href="../js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-        <link href="../js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-        <link rel="stylesheet" href="../js/data-tables/DT_bootstrap.css" />
     </head>
     <body onload="focusQueryInput();">
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
 
+                    <g:hasErrors bean="${employeeInstance}">
+                        <g:eachError bean="${employeeInstance}" var="error">
+                            <div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <strong>Error!</strong> <g:message error="${error}"/>
+                            </div>
+                        </g:eachError>
+                    </g:hasErrors>
                     <g:set var="haveQuery" value="${params.q?.trim()}" />
                     <g:set var="haveResults" value="${searchResult?.results}" />
-
-
-
                     <header class="panel-heading">
                         <h3>Resultados</h3>
                     </header>
                     <div class="panel-body">
                         <div class="adv-table">
                             <g:if test="${haveQuery && !haveResults && !parseException}">
-                                <p>No se encontraron resultados para la busqueda de - <strong>${params.q}</strong></p>
-
+                                <div class="alert alert-block alert-danger fade in">
+                                    <button data-dismiss="alert" class="close close-sm" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    No se encontraron resultados para la busqueda de - <strong>${params.q}</strong>
+                                </div>
                             </g:if>
 
                             <g:if test="${searchResult?.suggestedQuery}">
-                                <p>Did you mean <g:link controller="employee" action="search" params="[q: searchResult.suggestedQuery]">${StringQueryUtils.highlightTermDiffs(params.q.trim(), searchResult.suggestedQuery)}</g:link>?</p>
+                                <p>Quisiste decir <g:link controller="employee" action="search" params="[q: searchResult.suggestedQuery]">${StringQueryUtils.highlightTermDiffs(params.q.trim(), searchResult.suggestedQuery)}</g:link>?</p>
                             </g:if>
                             <table  class="display table table-bordered table-striped" id="dynamic-table">
-                                <tbody>
-                                    <thead>
+                                <thead>
                                     <tr>
-
                                         <g:sortableColumn property="cedula" title="${message(code: 'employee.cedula.label', default: 'Cédula')}" />
-
                                         <g:sortableColumn property="lastName" title="${message(code: 'employee.address.label', default: 'Nombres y Apellidos')}" />
-
-
-
-
                                     </tr>
                                 </thead>
+                                <div class="list">
                                     <g:if test="${haveResults}">
-                                    <div class="list">
                                         <g:each var="result" in="${searchResult.results}" status="index">
                                             <tr class="${(index % 2) == 0 ? 'even' : 'odd'}">
 
@@ -71,26 +71,16 @@
                                                 </td>
                                             </tr>
                                         </g:each>
-                                    </div>
-                                    </tbody>
-                                </table>
-                            </div>    
-                        </div>
-                </div>
+                                    </g:if>
+                                </div>
+                            </table>
+                        </div>    
+                    </div>
+                </section>
+
+            </div>
 
 
-            </section>
         </div>
-    </div>
-
-</g:if>
-</section>
-</div>
-</div>
-</div>
-
-        <div  style="text-align: left;float:left;"><font size="1">&copy; 2014. Consulrima Servicios 2020 CA. Todos los derechos reservados.</font></div>
-        <div style="text-align: right;"><font size="1">Desarrollado por: <a href="http://www.fasterik.com.ve/">Kristian Cortés y Keyla Hernández</a></font></div>
-            
-</body>
+    </body>
 </html>

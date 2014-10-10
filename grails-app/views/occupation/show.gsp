@@ -12,6 +12,16 @@
             <div class="col-md-12">
 
                 <section class="panel">
+                    <g:hasErrors bean="${occupationInstance}">
+                        <g:eachError bean="${occupationInstance}" var="error">
+                            <div class="alert alert-block alert-danger fade in">
+                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <strong>Error!</strong> <g:message error="${error}"/>
+                            </div>
+                        </g:eachError>
+                    </g:hasErrors>
                     <header class="panel-heading">
                         <h3>Cargo</h3>
                     </header>
@@ -25,7 +35,7 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 30%;"><strong>Salario</strong></td>
-                                        <td>${occupationInstance.salary}</td>
+                                        <td><g:formatNumber number="${occupationInstance.salary}" type="number"/> BsF.</td>
                                     </tr>
 
                                 </tbody>

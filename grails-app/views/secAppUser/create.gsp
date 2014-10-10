@@ -3,40 +3,43 @@
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'secAppUser.label', default: 'SecAppUser')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <g:set var="entityName" value="${message(code: 'employee.label', default: 'Employee')}" />
+
     </head>
     <body>
-        <a href="#create-secAppUser" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                </ul>
+        <g:form action="save"   enctype="multipart/form-data">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <h4> Registrar Usuario</h4>
+                    </header>
+
+                    <div class="panel-body">
+                        <g:hasErrors bean="${secAppUserInstance}">
+                            <g:eachError bean="${secAppUserInstance}" var="error">
+                                <div class="alert alert-block alert-danger fade in">
+                                    <button data-dismiss="alert" class="close close-sm" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <strong>Error!</strong> <g:message error="${error}"/>
+                                </div>
+                            </g:eachError>
+                        </g:hasErrors>
+                        <g:if test="${flash.message}">
+                            <div class="alert alert-info fade in"><strong>${flash.message}</strong> </div>
+                        </g:if>
+                        <div class="position-center">
+                            <div  role="form" >
+                                <g:render template="form"/>
+
+                                <button type="submit" class="btn btn-info">Continuar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
             </div>
-            <div id="create-secAppUser" class="content scaffold-create" role="main">
-                <h1><g:message code="default.create.label" args="[entityName]" /></h1>
-            <g:if test="${flash.error}">
-                <div class="alert alert-block alert-danger fade in">  <strong> ${flash.error}</strong> </div>
-            </g:if>
-            <g:if test="${flash.message}">
-                <div class="alert alert-info fade in"><strong>${flash.message}</strong> </div>
-                    </g:if>
-                    <g:hasErrors bean="${secAppUserInstance}">
-                <ul class="alert alert-block alert-danger fade in" role="alert">
-                    <g:eachError bean="${secAppUserInstance}" var="error">
-                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                        </g:eachError>
-                </ul>
-            </g:hasErrors>
-            <g:form action="save"  enctype="multipart/form-data">
-                <fieldset class="form">
-                    <g:render template="form"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-                </fieldset>
-            </g:form>
-        </div>
+        </g:form>
     </body>
 </html>

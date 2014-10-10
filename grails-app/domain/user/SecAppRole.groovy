@@ -11,4 +11,8 @@ class SecAppRole {
 	static constraints = {
 		authority blank: false, unique: true
        	}
+        
+    String toString(){
+        return "${authority}"
+    }
 }

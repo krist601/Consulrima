@@ -8,16 +8,18 @@
     </head>
     <body>
         <div id="create-load" class="content scaffold-create" role="main">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${loadInstance}">
-                <ul class="errors" role="alert">
-                    <g:eachError bean="${loadInstance}" var="error">
-                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                        </g:eachError>
-                </ul>
+                <g:eachError bean="${loadInstance}" var="error">
+                    <div class="alert alert-block alert-danger fade in">
+                        <button data-dismiss="alert" class="close close-sm" type="button">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        <strong>Error!</strong> <g:message error="${error}"/>
+                    </div>
+                </g:eachError>
             </g:hasErrors>
             <g:form action="save" >
                 <div class="col-lg-12">
