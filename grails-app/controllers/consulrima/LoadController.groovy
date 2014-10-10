@@ -1,9 +1,6 @@
 package consulrima
 
 import org.springframework.dao.DataIntegrityViolationException
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.nio.file.Path
 import java.awt.image.BufferedImage
 import java.io.ByteArrayOutputStream
 import java.net.URL
