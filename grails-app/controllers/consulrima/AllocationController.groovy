@@ -4,9 +4,6 @@ import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.security.access.annotation.Secured
 import java.text.SimpleDateFormat
 import org.compass.core.engine.SearchEngineQueryParseException
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.nio.file.Path
 import java.awt.image.BufferedImage
 import java.io.ByteArrayOutputStream
 import java.net.URL
