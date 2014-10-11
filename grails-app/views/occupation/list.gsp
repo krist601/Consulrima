@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'occupation.label', default: 'Occupation')}" />
+        <g:set var="entityName" value="${message(code: 'occupation.label', default: 'Cargos')}" />
     </head>
     <body>
         <div class="row">
@@ -27,8 +27,8 @@
                             <table  class="display table table-bordered table-striped" id="dynamic-table">
                                 <thead>
                                     <tr>
-                                        <g:sortableColumn property="occupationName" title="${message(code: 'occupation.occupationName.label', default: 'Occupation Name')}" />
-                                        <g:sortableColumn property="salary" title="${message(code: 'occupation.salary.label', default: 'Salary')}" />
+                                        <g:sortableColumn property="occupationName" title="${message(code: 'occupation.occupationName.label', default: 'Nombre del Cargo')}" />
+                                        <g:sortableColumn property="salary" title="${message(code: 'occupation.salary.label', default: 'Salario')}" />
                                     </tr>
                                 </thead>
                                 <tbody>

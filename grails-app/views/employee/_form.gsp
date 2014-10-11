@@ -11,7 +11,7 @@
         <label for="cedula">
             <g:message code="employee.cedula.label" default="Cédula" />
         </label>
-        <input type="text" data-mask="99999999" class="form-control" name="cedula" id="cedula" value="${employeeInstance?.cedula}" required>
+        <input type="text"  class="form-control" name="cedula" id="cedula" value="${employeeInstance?.cedula}" required>
     </div>
 </div>
 <div  class="row">

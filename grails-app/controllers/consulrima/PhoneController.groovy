@@ -18,7 +18,10 @@ class PhoneController {
     }
 
     def create() {
-        [phoneInstance: new Phone(params)]
+        println "params telefono"+params
+        def phon = new Phone(params)
+        phon.employee = Employee.get(params.foo)
+        [phoneInstance: phon]
     }
 
     def save() {
@@ -29,7 +32,7 @@ class PhoneController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'phone.label', default: 'Phone'), phoneInstance.id])
-        redirect(action: "show", id: phoneInstance.id)
+        redirect(controller:"employee", action: "show", id: phoneInstance.employee.id)
     }
 
     def show(Long id) {

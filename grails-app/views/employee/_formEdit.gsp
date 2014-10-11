@@ -8,7 +8,7 @@
         <label for="cedula">
             <g:message code="employee.cedula.label" default="Cédula" />
         </label>
-        <input type="text" data-mask="99999999" class="form-control" name="cedula" id="cedula" value="${employeeInstance?.cedula}" required>
+        <input type="text"  class="form-control" name="cedula" id="cedula" value="${employeeInstance?.cedula}" required>
     </div>
 </div>
 <div  class="row">
@@ -28,8 +28,12 @@
         <label for="bornDate">
             <g:message code="employee.bornDate.label" default="Fecha de Nacimiento" />
         </label>
-        <div class="form-group">
-            <input value="${employeeInstance?.bornDate}" name="bornDate" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" />
+     
+        <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="${employeeInstance?.bornDate}"  class="input-append date dpYears">
+            <input type="text" name="bornDate" readonly="" value="${employeeInstance?.bornDate}" class="form-control">
+            <span class="input-group-btn add-on">
+                <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+            </span>
         </div>
     </div>
     <div class="col-md-6 form-group">
@@ -48,7 +52,7 @@
         <label for="cedula">
             <g:message code="employee.cedula.label" default="Dirección" />
         </label>
-        <textarea class="form-control" name="address" id="cedula" value="${employeeInstance?.address}" required ></textarea>
+        <input class="form-control" name="address" id="cedula" value="${employeeInstance?.address}" required ></input>
     </div>
 </div>
 

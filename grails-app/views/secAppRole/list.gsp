@@ -41,7 +41,7 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="authority" title="${message(code: 'secAppRole.authority.label', default: 'Authority')}" />
+						<g:sortableColumn property="authority" title="${message(code: 'secAppRole.authority.label', default: 'Nombre')}" />
 					
 					</tr>
 				</thead>

@@ -45,9 +45,9 @@
                                 <thead>
                                     <tr>
 
-                                        <th><g:message code="secAppUserSecAppRole.secAppRole.label" default="Sec App Role" /></th>
+                                        <th><g:message code="secAppUserSecAppRole.secAppRole.label" default="Rol" /></th>
 
-                                        <th><g:message code="secAppUserSecAppRole.secAppUser.label" default="Sec App User" /></th>
+                                        <th><g:message code="secAppUserSecAppRole.secAppUser.label" default="Usuario" /></th>
 
                                     </tr>
                                 </thead>
