@@ -126,7 +126,7 @@
             <g:message code="employee.occupation.label" default="Ocupación" />
 
         </label>
-        <g:select id="occupation" name="occupation.id" from="${consulrima.Occupation.list()}" optionKey="id" value="${employeeInstance?.occupation?.id}" class="form-control" noSelection="['null': '']" required/>
+        <g:select id="occupation" name="occupation.id" from="${consulrima.Occupation.list()}" optionKey="id" value="${employeeInstance?.occupation?.id}" class="form-control" noSelection="['null': '']" />
     </div>
 
 

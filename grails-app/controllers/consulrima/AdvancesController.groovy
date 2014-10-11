@@ -19,7 +19,7 @@ class AdvancesController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 1000000, 10000000)
         [advancesInstanceList: Advances.list(params), advancesInstanceTotal: Advances.count()]
     }
 

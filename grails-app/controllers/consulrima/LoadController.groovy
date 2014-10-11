@@ -19,7 +19,7 @@ class LoadController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 1000000, 1000000)
         [loadInstanceList: Load.list(params), loadInstanceTotal: Load.count()]
     }
 

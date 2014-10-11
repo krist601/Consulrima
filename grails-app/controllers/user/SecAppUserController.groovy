@@ -9,20 +9,20 @@ import java.net.URL
 import javax.imageio.ImageIO
 import org.springframework.security.access.annotation.Secured
 
-@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
+
 class SecAppUserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
     def index() {
         redirect(action: "list", params: params)
     }
-
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [secAppUserInstanceList: SecAppUser.list(params), secAppUserInstanceTotal: SecAppUser.count()]
     }
-
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
     def create() {
         [secAppUserInstance: new SecAppUser(params)]
     }
@@ -37,7 +37,7 @@ class SecAppUserController {
         flash.message = message(code: 'default.created.message', args: [message(code: 'secAppUser.label', default: 'SecAppUser'), secAppUserInstance.id])
         redirect(action: "show", id: secAppUserInstance.id)
     }
-
+@Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
     def show(Long id) {
         def secAppUserInstance = SecAppUser.get(id)
         if (!secAppUserInstance) {
@@ -48,7 +48,7 @@ class SecAppUserController {
    
         [secAppUserInstance: secAppUserInstance]
     }
-    
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
     def edit(Long id) {
         def secAppUserInstance = SecAppUser.get(id)
         if (!secAppUserInstance) {
@@ -59,6 +59,7 @@ class SecAppUserController {
 
         [secAppUserInstance: secAppUserInstance]
     }
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_ANALISTA','ROLE_SUPERUSER'])
     def update(Long id, Long version) {
         def secAppUserInstance = SecAppUser.get(id)
         if (!secAppUserInstance) {

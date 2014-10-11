@@ -13,7 +13,7 @@ class OccupationController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 1000000, 100000000)
         [occupationInstanceList: Occupation.list(params), occupationInstanceTotal: Occupation.count()]
     }
 

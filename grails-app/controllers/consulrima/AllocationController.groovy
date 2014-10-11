@@ -20,7 +20,7 @@ class AllocationController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 1000000, 100000000)
         [allocationInstanceList: Allocation.list(params), allocationInstanceTotal: Allocation.count()]
     }
 
