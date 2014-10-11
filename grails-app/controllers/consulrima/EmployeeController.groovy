@@ -23,7 +23,7 @@ class EmployeeController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 100000, 100000000)
         [employeeInstanceList: Employee.list(params), employeeInstanceTotal: Employee.count()]
     }
 

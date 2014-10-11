@@ -126,7 +126,7 @@
             <g:message code="employee.occupation.label" default="Ocupación" />
 
         </label>
-        <g:select id="occupation" name="occupation.id" from="${consulrima.Occupation.list()}" optionKey="id" value="${employeeInstance?.occupation?.id}" class="form-control" noSelection="['null': '']"/>
+        <g:select id="occupation" name="occupation.id" from="${consulrima.Occupation.list()}" optionKey="id" value="${employeeInstance?.occupation?.id}" class="form-control" noSelection="['null': '']" required/>
     </div>
 
 
@@ -136,7 +136,7 @@
             <g:message code="employee.cedula.label" default="Fecha de Ingreso" />
         </label>
         <div class="form-group">
-                <input value="${employeeInstance?.admissionDate}" name="admissionDate" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" />
+                <input value="${employeeInstance?.admissionDate}" name="admissionDate" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" required/>
                
                 
         </div>
