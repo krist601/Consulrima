@@ -33,7 +33,7 @@
                                         <label for="salary">
                                             <g:message code="employee.cedula.label" default="Salario" />
                                         </label>
-                                        <g:field class="form-control" name="salary" id="cedula" type="number" value="${employeeInstance?.salary}" required=""/>
+                                        <g:field class="form-control" name="salary" id="cedula" type="text" value="${employeeInstance?.salary}" required=""/>
 
                                     </div><br>
 

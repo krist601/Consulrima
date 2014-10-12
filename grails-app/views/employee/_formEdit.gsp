@@ -30,7 +30,7 @@
         </label>
      
         <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="${employeeInstance?.bornDate}"  class="input-append date dpYears">
-            <input type="text" name="bornDate" readonly="" value="${employeeInstance?.bornDate}" class="form-control">
+            <input type="text" name="bornDate" readonly="" value="${employeeInstance?.bornDate.format('dd-MM-yyyy')}" class="form-control">
             <span class="input-group-btn add-on">
                 <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
             </span>

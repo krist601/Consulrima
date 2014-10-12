@@ -30,6 +30,7 @@ class LoadController {
 
     def save() {
         println params
+        params.amount=params.amount.replaceAll(",", ".")
         params.amount=Float.parseFloat(params.amount)
         try{
             params.date = sdf.parse(params.date)
@@ -73,6 +74,8 @@ class LoadController {
     @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def update(Long id, Long version) {
         println params
+        params.amount=params.amount.replaceAll(",", ".")
+        params.amount=Float.parseFloat(params.amount)
         try{
             params.date = sdf.parse(params.date)
         }

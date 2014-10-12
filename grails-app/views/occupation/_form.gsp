@@ -16,7 +16,7 @@
 		<g:message code="occupation.salary.label" default="Salario" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field class="form-control" name="salary" type="number" value="${occupationInstance.salary}" required=""/>
+	<g:field class="form-control" name="salary" type="text" value="${occupationInstance.salary}" required=""/>
 </div>
 <br>
 

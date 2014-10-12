@@ -5,7 +5,7 @@
         <g:message code="advances.amount.label" default="Monto" />
         <span class="required-indicator">*</span>
     </label>
-    <g:field class="form-control" name="amount" type="number" value="${advancesInstance.amount}" required=""/>
+    <g:field class="form-control" name="amount" type="text" value="${advancesInstance.amount}" required=""/>
 </div>
 
 <div class="col-md-12 form-group">

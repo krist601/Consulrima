@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="edit-advances" class="content scaffold-edit" role="main">
-            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+            
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            <h4> Registrar Cargo</h4>
+                            <h4> Editar Anticipo de Prestación Social</h4>
                         </header>
                         <div class="panel-body">
                             <div class="position-center">
@@ -39,7 +39,7 @@
                                             <g:message code="advances.amount.label" default="Monto" />
                                             <span class="required-indicator">*</span>
                                         </label>
-                                        <g:field class="form-control" name="amount" type="number" value="${advancesInstance.amount}" required=""/>
+                                        <g:field class="form-control" name="amount" type="text" value="${advancesInstance.amount}" required=""/>
                                     </div>
 
                                     <div class="col-md-12 form-group">

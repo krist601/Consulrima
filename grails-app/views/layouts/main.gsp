@@ -143,6 +143,7 @@
                                 </ul>
                             </li>
 
+<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
                             <li class="sub-menu">
                                 <a href="javascript:;">
                                     <i class="fa fa-laptop"></i>
@@ -156,6 +157,8 @@
                                     <li><a href="${createLink(controller:'SecAppRole', action:'list')}">Lista de Roles</a></li>
                                 </ul>
                             </li>
+                            
+</sec:ifAnyGranted>
                         </ul></div>        
                 </div>
             </aside>

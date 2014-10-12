@@ -34,6 +34,7 @@ class EmployeeController {
     def save() {
         println "los parametros son: "+params
         println "la cantidad de parametros son "+params.size()
+        params.salary=params.salary.replaceAll(",", ".")
         params.salary=Float.parseFloat(params.salary)
         def params2=params.clone()
         def numero = params.size()
@@ -45,12 +46,16 @@ class EmployeeController {
             x=x+1
         }
         try{
-            params.bornDate = sdf.parse(params.bornDate)
             params.admissionDate = sdf2.parse(params.admissionDate)
         }
         catch (Exception ex){
-            params.bornDate = sdf.parse("12-12-2012")
             params.admissionDate = sdf2.parse("12-12-2012")
+        }
+        try{
+            params.bornDate = sdf.parse(params.bornDate)
+        }
+        catch (Exception ex){
+            params.bornDate = sdf.parse("12-12-2012")
         }
         def employeeInstance = new Employee(params)
         if (!employeeInstance.save(flush: true)) {
@@ -238,13 +243,18 @@ class EmployeeController {
     }
     def updateAntiquity(Long id, Long version) {
         println params
+        params.salary=params.salary.replaceAll(",", ".")
         params.salary=Float.parseFloat(params.salary)
         try{
-            params.admissionDate = sdf2.parse(params.admissionDate)
             params.dischargeDate = sdf2.parse(params.dischargeDate)
         }
         catch (Exception ex){
             params.dischargeDate = null
+        }
+        try{
+            params.admissionDate = sdf2.parse(params.admissionDate)
+        }
+        catch (Exception ex){
             params.admissionDate = sdf2.parse("12-12-2012")
         }
        

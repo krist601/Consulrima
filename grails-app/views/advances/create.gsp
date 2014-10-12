@@ -25,7 +25,7 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            <h4>Registrar un Avance</h4>
+                            <h4>Registrar un Anticipo de Prestación Social</h4>
                         </header>
                         <div class="panel-body">
                             <div class="position-center">

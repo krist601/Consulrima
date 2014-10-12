@@ -24,7 +24,7 @@
                         </g:eachError>
                     </g:hasErrors>
                     <header class="panel-heading">
-                        <h3>Prestamo</h3>
+                        <h3>Anticipo de Prestación Social</h3>
                     </header>
                     <div class="panel-body">
                         <div id="show-occupation" class="content scaffold-show" role="main">
@@ -36,7 +36,7 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 30%;">Fecha de Adelanto</td>
-                                        <td><g:formatDate value="${advancesInstance?.date}" format="dd MMMM yyyy"/></td>
+                                        <td><g:formatDate date="${advancesInstance?.date}" format="dd MMMM yyyy"/></td>
                                     </tr>
 
                                 </tbody>

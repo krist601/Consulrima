@@ -49,7 +49,7 @@
 				<g:each in="${secAppRoleInstanceList}" status="i" var="secAppRoleInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${secAppRoleInstance.id}">${fieldValue(bean: secAppRoleInstance, field: "authority")}</g:link></td>
+						<td>${fieldValue(bean: secAppRoleInstance, field: "authority")}</td>
 					
 					</tr>
 				</g:each>
@@ -57,8 +57,7 @@
 			</table>
                         </div>
                     </div>
-                    <a href="${createLink(controller:'occupation', action:'create')}" class="btn btn-info" style="margin-left: 20px; margin-bottom: 20px;">Crear</a>
-                </section>
+                    </section>
             </div>
         </div>
         <div  style="text-align: left;float:left;"><font size="1">&copy; 2014. Consulrima Servicios 2020 CA. Todos los derechos reservados.</font></div>

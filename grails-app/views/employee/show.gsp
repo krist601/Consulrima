@@ -87,7 +87,7 @@
                             </li>
                             <li>
                                 <a data-toggle="tab" href="#advances">
-                                    <strong> Adelantos </strong>
+                                    <strong> Anticipos P.S.</strong>
                                 </a>
                             </li>
                             <li>
@@ -317,7 +317,7 @@
                                                                                                         <g:if test="${employeeInstance?.occupation}">
                                                                                                             <tr>
                                                                                                                 <td style="width: 30%;text-align: right; background-color: #f1f1f7;"><p style="margin-right: 20px;"><strong>Salario</strong></p></td>
-                                                                                                                <td style="background-color: #f1f1f7;"><g:formatNumber number="${employeeInstance?.occupation?.salary}" type="number"/> BsF</td>
+                                                                                                                <td style="background-color: #f1f1f7;"><g:formatNumber number="${employeeInstance?.occupation?.salary}" type="number" /> BsF</td>
                                                                                                             </tr>
 
                                                                                                         </g:if>
@@ -371,7 +371,7 @@
                                                                                                     <span class="arrow2"></span>
                                                                                                     <div class="text">
                                                                                                         <div class="second bg-green" style="width: 170px;">
-                                                                                                            <a href="${createLink(controller:'advances', action:'create', params:[foo:employeeInstance?.id])}" style="color: white;">Agregar nuevo Avance</a>
+                                                                                                            <a href="${createLink(controller:'advances', action:'create', params:[foo:employeeInstance?.id])}" style="color: white;">Agregar nuevo Anticipo P.S.</a>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>

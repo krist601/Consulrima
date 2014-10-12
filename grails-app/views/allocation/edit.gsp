@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="edit-allocation" class="content scaffold-edit" role="main">
-            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>     
@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            <h4> Registrar Cargo</h4>
+                            <h4> Editar Dotación</h4>
                         </header>
                         <div class="panel-body">
                             <div class="position-center">
@@ -63,8 +63,12 @@
                                             <g:message code="allocation.allocationDate.label" default="Fecha de Dotación" />
                                             <span class="required-indicator">*</span>
                                         </label>
-                                        <div class="form-group">
-                                            <input value="${allocationInstance?.allocationDate.format('MM-dd-yyyy')}" name="allocationDate" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="" />
+                                      
+                                        <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="${allocationInstance?.allocationDate}"  class="input-append date dpYears">
+                                            <input type="text" name="allocationDate" readonly=""  size="16" value="${allocationInstance?.allocationDate.format("MM-dd-yyyy")}" class="form-control">
+                                            <span class="input-group-btn add-on">
+                                                <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
                                         </div>
                                     </div>
 

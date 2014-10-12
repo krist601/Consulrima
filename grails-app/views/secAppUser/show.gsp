@@ -70,9 +70,16 @@
                             </table>
                         </div>
 
-                        <a href="${createLink(controller:'secAppUser', action:'edit',id:secAppUserInstance?.id)}" class="btn btn-info" style="margin-left: 20px; margin-bottom: 20px;">Editar Perfil</a>
-                        <a href="${createLink(controller:'secAppUser', action:'delete',id:secAppUserInstance?.id)}" class="btn btn-danger" style="margin-left: 20px; margin-bottom: 20px;"> <i class="glyphicon glyphicon-trash"></i> Eliminar</a>
-
+                         <g:form>
+                                <fieldset class="buttons">
+                                    <g:hiddenField name="id" value="${secAppUserInstance?.id}" />
+                                    <center>
+                                        <g:link class="btn btn-info" action="edit" id="${secAppUserInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                        <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                    </center>
+                                </fieldset>
+                            </g:form>
+                    
                     </center>
                 </section>
 

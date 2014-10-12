@@ -67,6 +67,7 @@ class AllocationController {
 
     @Secured(['ROLE_ADMINISTRADOR','ROLE_SUPERUSER'])
     def update(Long id, Long version) {
+        params.allocationDate = sdf.parse(params.allocationDate)
         def allocationInstance = Allocation.get(id)
         if (!allocationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'allocation.label', default: 'Allocation'), id])

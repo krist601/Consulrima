@@ -65,7 +65,7 @@
                             </table>
                         </div>
                     </div>
-                    <a href="${createLink(controller:'occupation', action:'create')}" class="btn btn-info" style="margin-left: 20px; margin-bottom: 20px;">Crear</a>
+                   
                 </section>
             </div>
         </div>

@@ -23,7 +23,7 @@
                         </g:eachError>
                     </g:hasErrors>
                     <header class="panel-heading">
-                        <h3>Prestamo</h3>
+                        <h3>Préstamo</h3>
                     </header>
                     <div class="panel-body">
                         <div id="show-occupation" class="content scaffold-show" role="main">
@@ -40,12 +40,12 @@
                                     </tr>
                                     <tr>
                                         <g:if test="${(loadInstance?.amount<0)}">
-                                            <td style="width: 30%;">Fecha del Prestamo</td>
+                                            <td style="width: 30%;">Fecha del Préstamo</td>
                                         </g:if>
                                         <g:else>
                                             <td style="width: 30%;">Fecha de Abono</td>
                                         </g:else>
-                                        <td><g:formatDate value="${loadInstance?.date}" format="dd MMMM yyyy"/></td>
+                                        <td><g:formatDate date="${loadInstance?.date}" format="dd MMMM yyyy"/></td>
                                     </tr>
 
                                 </tbody>
